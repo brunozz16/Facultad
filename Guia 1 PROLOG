@@ -8,10 +8,35 @@ mismapersona(X,X).
 eshermano(A,B):-espadre(C,A),espadre(C,B),not(mismapersona(A,B)).
 esnieto(A,B):-espadre(C,A),espadre(B,C).
 ----------------------------------------------
-2.
-a)espadre(alberto,luis).
-b)espadre(luis,alberto).
-c)eshermano(X,luis).
-d)esnieto(luisa,X).
-e)esnieto(X,Y).
+EJERCICIO 1.
+a) c
+b) No existe
+c) 2,3
+d) #t
+e) todas las listas
+f) #f
+g) todas, b
 ----------------------------------------------
+EJERCICIO 2.
+a) espadre(alberto,luis).
+b) espadre(luis,alberto).
+c) eshermano(X,luis).
+d) esnieto(luisa,X).
+e) esnieto(X,Y).
+----------------------------------------------
+EJERCICIO 3.
+a) menu(X,Y,Z).
+b) menu(X,Y,'Dulce de batata').
+C) menu(X,'Locro',Z).
+d) false
+e) false
+----------------------------------------------
+EJERCICIO 4.
+a) ruta(X,'cordoba').
+b) ruta('parana',X).
+c) false
+d) combinacionruta(A,B):-ruta(A,C),ruta(C,B).   (true, false)
+----------------------------------------------
+EJERCICIO 5.
+a)
+
