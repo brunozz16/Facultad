@@ -1,0 +1,17 @@
+espadre(leoncito,geronimo).
+espadre(leoncito,alberto).
+espadre(alberto,juan).
+espadre(alberto,luis).
+espadre(geronimo,luisa).
+mismapersona(X,X).
+
+eshermano(A,B):-espadre(C,A),espadre(C,B),not(mismapersona(A,B)).
+esnieto(A,B):-espadre(C,A),espadre(B,C).
+----------------------------------------------
+2.
+a)espadre(alberto,luis).
+b)espadre(luis,alberto).
+c)eshermano(X,luis).
+d)esnieto(luisa,X).
+e)esnieto(X,Y).
+----------------------------------------------
