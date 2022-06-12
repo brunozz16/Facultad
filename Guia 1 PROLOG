@@ -32,11 +32,12 @@ d) false
 e) false
 ----------------------------------------------
 EJERCICIO 4.
+a) menu(X,'Locro',Z).
+----------------------------------------------
+EJERCICIO 5.
 a) ruta(X,'cordoba').
 b) ruta('parana',X).
 c) false
 d) combinacionruta(A,B):-ruta(A,C),ruta(C,B).   (true, false)
-----------------------------------------------
-EJERCICIO 5.
-a)
+
 
