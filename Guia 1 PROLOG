@@ -39,5 +39,12 @@ a) ruta(X,'cordoba').
 b) ruta('parana',X).
 c) false
 d) combinacionruta(A,B):-ruta(A,C),ruta(C,B).   (true, false)
+----------------------------------------------
+EJERCICIO 6.
+a)
+planeta(Planeta):-orbita(Planeta,_),not(estrella(Planeta)),!.
+luna(Luna):-orbita(_,Luna),not(planeta(Luna)).
+lunade(Planeta,Luna):-orbita(Planeta,Luna),planeta(Planeta),luna(Luna).
+b)
 
 
