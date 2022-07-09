@@ -1,0 +1,173 @@
+"GUIA 3 FUNCIONAL"
+;"Ejercicio 1"
+(define factorial
+  (lambda (numero)
+    (cond
+      ((> numero 0) (* numero (factorial (- numero 1))))
+      ((eqv? numero 0) 1)
+      ((< numero 0) "no definido")
+     )
+    )
+  )
+"1)FACTORIAL"
+(factorial 7)
+;"Ejercicio 2"
+(define largo-lista
+  (lambda (lista)
+    (if (null? lista)
+        0
+        (+ 1 (largo-lista (cdr lista)))
+     )
+    )
+  )
+"2)LARGO LISTA"
+(largo-lista (list 1 2 2 5 1 3 2 3 0))
+;"Ejercicio 3"
+(define count-elem
+  (lambda (elemento lista)
+    (if(null? lista)
+       0
+       (if (eqv? (car lista) elemento)
+           (+ 1 (count-elem elemento (cdr lista)))
+           (+ 0 (count-elem elemento (cdr lista)))
+        )
+    )
+  )
+)
+"3)CONTAR ELEMENTO EN LISTA"
+(count-elem 3 '(1 2 3 4 5 4 3 2 1 3))
+;"Ejercicio 4"
+(define subst
+  (lambda (valor1 valor2 lista)
+    (if (null? lista)
+        '()
+        (if(eqv? (car lista) valor1)
+           (cons valor2 (subst valor1 valor2 (cdr lista)))
+           (cons (car lista) (subst valor1 valor2 (cdr lista)))
+         )
+        )
+    )
+  )
+"4)CAMBIAR LETRA"
+(subst 'c 'k '( c o c o n u t))
+;"Ejercicio 5"
+(define sublist
+  (lambda (lista)
+    (if(null? lista)
+       '()
+       (sublistwrapper lista (car lista))
+     )
+   )
+ )
+(define sublistwrapper
+  (lambda (lista valor)
+    (if(null? lista)
+       '()
+       (if(equal? valor (car lista))
+          (cons (car lista) (sublistwrapper (cdr lista) valor))
+          (sublistwrapper (cdr lista) valor)
+        )
+     )
+  )
+)
+"5)SUBLISTAS"
+(sublist '(A A B C A A C))
+;"Ejercicio 6"
+(define concatenar
+  (lambda (l1 l2)
+    (if (null? l1)
+          l2
+          (cons (car l1) (concatenar (cdr l1) l2))
+     )
+   )
+ )
+"6)CONCATENA"
+(concatenar '(A B C D) '(E F G H))
+;"Ejercicio 7"
+(define primer-num
+  (lambda (lista)
+    (if (null? lista)
+        null
+        (if(number? (car lista))
+           (car lista)
+           (primer-num (cdr lista))
+         )
+     )
+    )
+  )
+"7)PRIMER NUMERO"
+(primer-num '((1.2) 'a (b) (5) 6 8 'a 9))
+;"Ejercicio 8"
+(define attach-at-end
+  (lambda (valor lista)
+    (if (null? lista)
+        (cons valor lista)
+        (cons (car lista) (attach-at-end valor (cdr lista)))
+     )
+    )
+  )
+
+"8)ATTACH AT END"
+(attach-at-end 'prueba '(esto es una))
+
+;"Ejercicio 9"
+(define convdatos
+  (lambda (lista)
+    (if (null? lista)
+        '()
+        (let ((tipo (caar lista)) (listar (cadar lista)))
+          (cond
+            ((equal? tipo "D") (cons (absoluto listar) (convdatos (cdr lista))))
+            ((equal? tipo "T") (cons (convString listar) (convdatos (cdr lista))))
+            ((equal? tipo "B") (cons (convBool listar) (convdatos (cdr lista))))
+           )
+         )
+     )
+  )
+)
+(define absoluto
+  (lambda(lista)
+    (if (null? lista)
+        '()
+        (if (> (car lista) 0)
+            (cons (car lista) (absoluto (cdr lista)))
+            (cons (* (car lista) -1) (absoluto (cdr lista)))
+         ))))
+
+(define convString
+  (lambda (lista)
+    (if (null? lista)
+        '()
+    (cons (string->number(car lista)) (convString (cdr lista)))
+    )))
+
+(define convBool
+  (lambda(lista)
+    (if (null? lista)
+        '()
+        (if (eqv? (car lista) "V")
+            (cons 1 (convBool (cdr lista)))
+            (cons 0 (convBool (cdr lista)))
+                  ))))
+"9)CONVERTIR DATOS"
+(convdatos '(("D" (1 2 -3 4 -5)) ("T" ("6" "7" "8")) ("B" ("V" "F"))))
+
+;"Ejercicio 10"
+(define dist
+  (lambda (l1 l2)
+    (abs (sqrt (+ (expt (- (car l1) (car l2)) 2) (expt (- (cdr l1) (cdr l2)) 2))))
+    )
+  )
+
+(dist '(1 . 1) '(1 . 2))
+
+(define distance
+  (lambda (l)
+    (if (null? (cdr l))
+        '()
+        (cons (dist (car l) (car (cdr l))) (distance (cdr l)))
+        )
+    )
+  )
+"10)DISTANCIA"
+(distance '((1 . 1) (1 . 2) (2 . 2) (2 . 1) (1 . 1)))
