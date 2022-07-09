@@ -1,0 +1,20 @@
+public class Cliente {
+	private String razonSocial;
+	private String Cuit;
+	private IVA myIVA;
+	
+	public Cliente(String razonSocial, String cuit, IVA myIVA) {
+		super();
+		this.razonSocial = razonSocial;
+		this.Cuit = cuit;
+		this.myIVA = myIVA;
+	}
+	public String verNombre() {
+		return razonSocial;
+	}
+	public String verCuit() {
+		return Cuit;
+	}
+
+	
+}

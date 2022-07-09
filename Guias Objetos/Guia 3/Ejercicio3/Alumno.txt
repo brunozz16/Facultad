@@ -1,0 +1,20 @@
+import java.util.Calendar;
+
+public class Alumno implements Persona {
+	//ATRIBUTOS
+	private String nombre;
+	private Calendar fecha_ingreso;
+	private Calendar fecha_egreso;
+	//CONSTRUCTOR
+	public Alumno(String nombre, Calendar fecha_ingreso, Calendar fecha_egreso) {
+		super();
+		this.nombre = nombre;
+		this.fecha_ingreso = fecha_ingreso;
+		this.fecha_egreso = fecha_egreso;
+	}
+	//METODOS DE LA INTERFACE
+	@Override
+	public void mostrar() {
+		System.out.println(this.nombre+"-Fecha Ingreso:"+fecha_ingreso.get(Calendar.DAY_OF_MONTH)+"/"+fecha_ingreso.get(Calendar.MONTH)+"/"+fecha_ingreso.get(Calendar.YEAR));
+	}
+}

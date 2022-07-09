@@ -1,0 +1,17 @@
+public class Auto extends Vehiculo {
+	private Pais myPais;
+	
+	public Auto(String marca, String modelo, String patente, float precio, float kilometraje,
+			Detalle myDetalle, Dueño myDueño, Venta myVenta,Pais m_pais) {
+		super(marca, modelo, patente, precio, kilometraje, myDetalle, myDueño, myVenta);
+		myPais=m_pais;
+	}
+	@Override
+	public Boolean esAuto() {
+		return true;
+	}
+	@Override
+	public Boolean esAutoNacional() {
+		return myPais.esNacional();
+	}
+}

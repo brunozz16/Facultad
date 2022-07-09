@@ -1,0 +1,16 @@
+import java.util.Calendar;
+
+public class Jornada {
+	private Integer horas;
+	private Calendar fecha;
+	public Jornada(Integer horas, Calendar fecha) {
+		this.horas = horas;
+		this.fecha = fecha;
+	}
+	public boolean pertenecePeriodo(Calendar c) {
+		return fecha.equals(c);
+	}
+	public int mostrarHoras() {
+		return this.horas;
+	}
+}

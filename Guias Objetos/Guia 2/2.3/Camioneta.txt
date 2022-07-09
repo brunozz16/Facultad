@@ -1,0 +1,15 @@
+public class Camioneta extends Vehiculo {
+
+	public Camioneta(String marca, String modelo, String patente, float precio, float kilometraje,
+			Detalle myDetalle, Dueño myDueño, Venta myVenta) {
+		super(marca, modelo, patente, precio, kilometraje, myDetalle, myDueño, myVenta);
+	}
+	@Override
+	public Boolean esAuto() {
+		return false;
+	}
+	@Override
+	public Boolean esAutoNacional() {
+		return true;
+	}
+}

@@ -1,0 +1,57 @@
+//////////////////CLASE MAIN//////////////////////
+package ejer4;
+
+public class main {
+
+	public static void main(String[] args) {
+		Persona person=new Persona("Claudio",1999,06,10,"password");
+		if(person.validarKey("password")) {
+			System.out.println("Clave correcta");
+		}else {
+			System.out.println("Clave incorrecta");
+		}
+	}
+
+}
+//////////////////////////////////////////////////
+////////////////CLASE PERSONA/////////////////////
+package ejer4;
+
+import java.util.Calendar;
+
+public class Persona {
+	private String nombre;
+	private int edad;
+	private Calendar calendario;
+	private String password;
+	
+	public Persona(String NAME,int aa,int mm,int dd,String PASS){
+		nombre=NAME;
+		password=StringMD.getStringMessageDigest(PASS, StringMD.SHA256);
+		calendario=calendario.getInstance();
+		
+		if(calendario.get(Calendar.MONTH)>mm) {
+				edad=calendario.get(Calendar.YEAR)-aa-1;
+			}
+		if(calendario.get(Calendar.MONTH)<mm)	{
+			edad=calendario.get(Calendar.YEAR)-aa;
+		}
+		if(calendario.get(Calendar.MONTH)==mm)	{
+			if(calendario.get(Calendar.DAY_OF_MONTH)>dd)	{
+				edad=calendario.get(Calendar.YEAR)-aa-1;
+			}else {
+				edad=calendario.get(Calendar.YEAR)-aa;
+			}
+		}
+		calendario.set(aa, mm,dd);
+	}
+	
+	public boolean validarKey(String PASS) {
+		if(this.password.equals(StringMD.getStringMessageDigest(PASS, StringMD.SHA256))) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+}
+//////////////////////////////////////////////////

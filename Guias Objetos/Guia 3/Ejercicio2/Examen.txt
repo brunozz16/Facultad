@@ -1,0 +1,49 @@
+import java.util.Calendar;
+
+public class Examen {
+	//ATRIBUTOS
+	private Alumno myAlumno;
+	private Catedra myCatedra;
+	private Integer myNota;
+	private Calendar myFecha;
+	private tipoExamen myTipoExamen;
+	//CONSTRUCTOR
+	public Examen(Alumno myAlumno, Catedra myCatedra, Integer myNota, Calendar myFecha, tipoExamen myTipoExamen) {
+		this.myAlumno = myAlumno;
+		this.myCatedra = myCatedra;
+		this.myNota = myNota;
+		this.myFecha = myFecha;
+		this.myTipoExamen = myTipoExamen;
+	}
+	//GETTERS AND SETTERS
+	public Integer getNota() {
+		return myNota;
+	}
+	public void setNota(Integer nota) {
+		this.myNota = nota;
+	}
+	public Calendar getFecha() {
+		return myFecha;
+	}
+	public void setFecha(Calendar fecha) {
+		this.myFecha = fecha;
+	}
+	public Alumno getMyAlumno() {
+		return myAlumno;
+	}
+	public void setMyAlumno(Alumno myAlumno) {
+		this.myAlumno = myAlumno;
+	}
+	public Catedra getMyCatedra() {
+		return myCatedra;
+	}
+	public void setMyCatedra(Catedra myCatedra) {
+		this.myCatedra = myCatedra;
+	}
+	public tipoExamen getMyTipoExamen() {
+		return myTipoExamen;
+	}
+	public void setMyTipoExamen(tipoExamen myTipoExamen) {
+		this.myTipoExamen = myTipoExamen;
+	}
+}

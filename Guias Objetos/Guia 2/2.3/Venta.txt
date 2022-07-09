@@ -1,0 +1,47 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class Venta {
+	private Vector<Vehiculo>  myVehiculos;
+	private Calendar fecha;
+	private Comprador myComprador;
+	
+	public Venta(Vector<Vehiculo> myVehiculos, Calendar fecha, Comprador myComprador) {
+		this.myVehiculos = myVehiculos;
+		this.fecha = fecha;
+		this.myComprador = myComprador;
+	}
+
+	public float montoTotal() {
+		float total=0f;
+		for(Vehiculo oVehiculo:myVehiculos) {
+			total+=oVehiculo.verPrecioVenta();
+		}
+		return total;
+	}
+	
+	public Boolean esVentaAuto() {
+		return null;
+	}
+	public void verFecha() {
+		System.out.println(Calendar.DAY_OF_MONTH+"/"+Calendar.MONTH+"/"+Calendar.YEAR);
+	}
+	public String verComprador() {
+		return myComprador.verDatosComprador();
+	}
+	public String verVehiculosVendidos() {
+		String ventas="";
+		for(Vehiculo oVehiculo:myVehiculos) {
+			ventas+=oVehiculo.verMarca()+" "+oVehiculo.verModelo()+" / $"+oVehiculo.verPrecioVenta()+"\n";
+		}
+		return ventas;
+	}	
+	public String verAutosNacionalesConDueño() {
+		String res = null;
+		for(Vehiculo oVehiculo:myVehiculos) {
+			if(oVehiculo.esAutoNacional() && oVehiculo.tieneDueño()!=null)
+			res+=oVehiculo.verMarca()+" "+oVehiculo.verModelo()+" / $"+oVehiculo.verPrecioVenta()+"\n";
+		}
+		return res;
+	}
+}

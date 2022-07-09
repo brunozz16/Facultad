@@ -1,0 +1,12 @@
+public class Comprador {
+	private String dni;
+	private Persona myPersona;
+	
+	public Comprador(String dni, Persona myPersona) {
+		this.dni = dni;
+		this.myPersona = myPersona;
+	}
+	public String verDatosComprador() {
+		return myPersona.verNombreApellido()+", dni:"+dni;
+	}
+}

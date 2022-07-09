@@ -1,0 +1,31 @@
+import java.util.Vector;
+
+public class Facultad {
+	//ATRIBUTOS
+	private Universidad myUniversidad;
+	private Vector<Carrera> myCarreras;
+	//CONSTRUCTOR
+	public Facultad(Universidad myUniversidad, Vector<Carrera> myCarrera) {
+		super();
+		this.myUniversidad = myUniversidad;
+		this.myCarreras = myCarrera;
+	}
+	//GETTERS AND SETTERS
+	public Universidad getMyUniversidad() {
+		return myUniversidad;
+	}
+	public void setMyUniversidad(Universidad myUniversidad) {
+		this.myUniversidad = myUniversidad;
+	}
+	public Vector<Carrera> getMyCarrera() {
+		return myCarreras;
+	}
+	public void setMyCarrera(Vector<Carrera> myCarrera) {
+		this.myCarreras = myCarrera;
+	}
+	public void listarAlumnos(Catedra oCatedra) {
+		for(Carrera oCarrera:myCarreras) {
+			oCarrera.listarAlumnos(oCatedra);
+		}
+	}	
+}

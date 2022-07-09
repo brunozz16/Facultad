@@ -1,0 +1,39 @@
+import java.util.Vector;
+
+public class Empresa {
+	private String nombre;
+	private IVA myIva;
+	private Vector<Cliente> myCliente;
+	private Vector<Factura> myFacturas;
+	private Vector<Producto> myProducto;
+
+	public Empresa(String nombre, IVA myIva) {
+		super();
+		this.nombre = nombre;
+		this.myIva = myIva;
+		myCliente=new Vector<Cliente>();
+		myFacturas=new Vector<Factura>();
+		myProducto=new Vector<Producto>();
+	}
+	public void listarFacturas() {
+		for(int i=0;i<myFacturas.size();i++) {
+		System.out.println("Nombre de la empresa: "+this.nombre+" -IVA "+myIva.descripcionIVA());
+		System.out.println("Cliente "+myCliente.get(i).verNombre()+" -cuit "+myCliente.get(i).verCuit());
+		System.out.print("Fecha ");
+		myFacturas.get(i).verFecha();
+		System.out.println("Total $"+myFacturas.get(i).calcularTotal());
+		myFacturas.get(i).verDetalles();
+		
+		}
+	}
+	
+	public void cargarCliente(Cliente o) {
+		myCliente.add(o);
+	}
+	public void cargarFactura(Factura f) {
+		myFacturas.add(f);
+	}
+	public void cargarProducto(Producto p) {
+		myProducto.add(p);
+	}
+}

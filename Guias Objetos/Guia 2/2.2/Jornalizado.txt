@@ -1,0 +1,51 @@
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.Vector;
+
+public class Jornalizado extends Trabajador {
+	private Vector<Jornada>  myJornada;
+	private Vector<HorasJornal>  myHorasJornal;
+	private Jefe myJefe;
+
+	public Jornalizado(String nombre, String apellido, String direccion, Integer dni,
+			Vector<Jornada> myJornada, Vector<HorasJornal> myHorasJornal, Jefe jefe1) {
+		super(nombre, apellido, direccion, dni);
+		this.myJornada = myJornada;
+		this.myHorasJornal = myHorasJornal;
+		this.myJefe = jefe1;
+	}
+
+	public float calcularSueldo(Calendar periodo) {
+		float sueldo=0f;
+		//Calcular cantidad de horas
+		Integer horasTrabajadas=0;
+		for(Jornada oJornada:myJornada) {
+			if(oJornada.pertenecePeriodo(periodo)) {
+				horasTrabajadas+=oJornada.mostrarHoras();
+			}
+		}
+		//Busco los valores de las horas para el periodo
+		Boolean noEncontre=true;
+		Iterator<HorasJornal> iPreciosHora=myHorasJornal.iterator();
+		while(iPreciosHora.hasNext() && noEncontre) {
+			HorasJornal oHorasJornal=iPreciosHora.next();	
+			if(oHorasJornal.pertenecePeriodo(periodo)) {
+				sueldo=oHorasJornal.calcularSueldo(horasTrabajadas);
+				noEncontre=false;
+			}
+		}
+		return sueldo;	
+	}
+	
+	public int verHorasTrabajadas() {
+		int horas=0;
+		for(Jornada oJornada:myJornada) {
+			horas+=oJornada.mostrarHoras();
+		}
+		return horas;
+	}
+	
+	public boolean esEmpleadoDe(Jefe j) {
+		return myJefe.equals(j);
+	}
+}

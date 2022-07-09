@@ -1,0 +1,29 @@
+import java.util.Calendar;
+
+public class Jefe extends Trabajador {
+
+	public Float sueldo;
+
+	public Jefe(String nombre, String apellido, String direccion, Integer dni, Float sueldo) {
+		super(nombre, apellido, direccion, dni);
+		this.sueldo = sueldo;
+	}
+
+	@Override
+	public float calcularSueldo(Calendar periodo) {
+		return this.sueldo;
+
+	}
+
+	@Override
+	public boolean esEmpleado(Jefe ojefe) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String verTrabajador() {
+		return "Jefe";
+	}
+}
+

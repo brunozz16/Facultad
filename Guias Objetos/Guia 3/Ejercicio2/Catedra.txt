@@ -1,0 +1,45 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class Catedra {
+	//ATRIBUTOS
+	private String nombre;
+	private Vector<Examen> myExamenes;
+	private Vector<Comision> myComisiones;
+	//CONSTRUCTOR
+	public Catedra(String nombre, Vector<Examen> myExamenes, Vector<Comision> myComisiones) {
+		super();
+		this.nombre = nombre;
+		this.myExamenes = myExamenes;
+		this.myComisiones = myComisiones;
+	}
+	//GETTERS AND SETTERS
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public Vector<Examen> getMyExamenes() {
+		return myExamenes;
+	}
+	public void setMyExamenes(Vector<Examen> myExamenes) {
+		this.myExamenes = myExamenes;
+	}
+	public Vector<Comision> getMyComisiones() {
+		return myComisiones;
+	}
+	public void setMyComisiones(Vector<Comision> myComisiones) {
+		this.myComisiones = myComisiones;
+	}
+	//METHODS
+	public void verComisiones() {
+		Calendar fechaActual=Calendar.getInstance();
+		int añoActual=fechaActual.get(Calendar.YEAR);
+
+		for(Comision oComisiones:myComisiones) {
+			if(oComisiones.getAñoAcademico()==añoActual)//Lista solo las comisiones del año actual
+				oComisiones.verComision();
+		}
+	}
+}

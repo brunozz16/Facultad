@@ -1,0 +1,15 @@
+public class Pais {
+	private String nombre;
+	public Pais(String nombre) {
+		this.nombre = nombre;
+	}
+	public boolean esNacional() {
+		boolean respuesta=false;
+		if(nombre=="Argentina") {
+			respuesta= true;
+		}else {
+			respuesta= false;
+		}
+		return respuesta;
+	}
+}

@@ -1,0 +1,39 @@
+import java.util.Calendar;
+
+public class HorasJornal {
+	private Float menor40;
+	private Float mayor40;
+	private Calendar fechaDesde;
+	private Calendar fechaHasta;
+	public HorasJornal(float i,float j, Calendar fechaDesde, Calendar fechaHasta) {
+		this.menor40 = i;
+		this.mayor40 = j;
+		this.fechaDesde = fechaDesde;
+		this.fechaHasta = fechaHasta;
+	}
+	public float calcularSueldo(int horas) {
+		float sueldo=0f;
+		int horastrabajadas=0;
+		if(horas>=40){
+			sueldo+=menor40*40;
+			horastrabajadas=horas-40;
+			sueldo+=horastrabajadas*mayor40;
+		}else {
+			sueldo+=horas*menor40;
+		}	
+		return sueldo; 
+	}
+	public boolean pertenecePeriodo(Calendar periodo) {
+		boolean bandera=true;
+		if(periodo.after(fechaHasta)) {
+			bandera=false;
+		}else {
+			if(periodo.before(fechaDesde)) {
+				bandera=false;
+			}else {
+				bandera=true;
+			}
+		}
+		return bandera;
+	}
+}

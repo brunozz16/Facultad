@@ -1,0 +1,30 @@
+import java.util.Calendar;
+
+public class Mensualizado extends Trabajador {
+
+	private Jefe myJefe;
+	private Categoria myCategoria;
+	@Override
+	public float calcularSueldo(Calendar periodo) {
+		return myCategoria.getSueldo();
+	}
+	public Mensualizado(String nombre, String apellido, String direccion, Integer dni
+			,Jefe myJefe, Categoria myCategoria) {
+		super(nombre, apellido, direccion, dni);
+		this.myJefe = myJefe;
+		this.myCategoria = myCategoria;
+	}
+	@Override
+	public boolean esEmpleado(Jefe ojefe) {
+		boolean respuesta=false;
+		
+		if(ojefe.equals(myJefe))
+		respuesta= true;
+		
+		return respuesta;
+	}
+	@Override
+	public String verTrabajador() {
+		return "Mensualizado";
+	}
+}

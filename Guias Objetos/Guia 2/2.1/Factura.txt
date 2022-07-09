@@ -1,0 +1,40 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class Factura {
+
+	private String numero;
+  	private Calendar fecha;
+  	private Vector<detalleFactura>  mydetalleFactura;
+        private Cliente  myCliente;
+
+    public Factura(String numero, Calendar fecha,  Cliente myCliente) {
+		super();
+		this.numero = numero;
+		this.fecha = fecha;
+		this.myCliente = myCliente;
+		this.mydetalleFactura=new Vector<detalleFactura>();
+		}
+
+	public float calcularTotal() {
+    	float total=0f;
+    	for(detalleFactura odetalle:mydetalleFactura) {
+    		total+=odetalle.precioFinalDetalle();
+    	}
+    	return total;
+    }
+	public void cargarDetalle(detalleFactura d) {
+		this.mydetalleFactura.add(d);
+	}
+	public void verFecha() {
+		 System.out.println(fecha.get(Calendar.DAY_OF_MONTH)+"/"+fecha.get(Calendar.MONTH)+"/"+fecha.get(Calendar.YEAR));
+	}
+	public void verDetalles() {
+		for(int i=0;i<mydetalleFactura.size();i++) {
+			 
+			System.out.println("Detalle "+(i+1)+" :"+mydetalleFactura.get(i).verNombreProducto()+
+					"  "+mydetalleFactura.get(i).verUnidad()+" unid.  Total Item:$"+mydetalleFactura.get(i).precioFinalDetalle());
+		}
+	}
+
+}

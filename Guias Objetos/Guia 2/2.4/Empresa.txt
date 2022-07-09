@@ -1,0 +1,40 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class Empresa {
+  private String nombre;
+  private Vector<Trabajador> myTrabajador;
+
+  public Empresa(String nombre, Vector<Trabajador> myTrabajador) {
+	super();
+	this.nombre = nombre;
+	this.myTrabajador = myTrabajador;
+}
+
+public void calcularSueldos(Calendar periodo) {
+	System.out.println("--Sueldos de "+nombre+"--");
+	for(Trabajador oTrabajador:myTrabajador) {
+			System.out.print(oTrabajador.toString());
+			System.out.print(oTrabajador.calcularSueldo(periodo));
+			System.out.println("]");
+		}
+  }
+public String verNombre() {
+	return this.nombre;
+}
+//ejercicio 4
+public void listarEmpleados(Jefe oJefe) {
+	for(Trabajador oTrabajador:myTrabajador) {
+		if(oTrabajador.esDelTipo(Trabajador.tipo.Jefe)) {
+			System.out.println("Jefe: "+oTrabajador.verNombreCompleto());
+			for(Trabajador oTrabajador2:myTrabajador) {
+				if(oTrabajador2.esEmpleado((Jefe)oTrabajador)) {
+					System.out.println(oTrabajador2.verNombreCompleto()+"--"+oTrabajador2.verTrabajador());
+				}
+			}
+		}
+	}
+}
+
+}
+

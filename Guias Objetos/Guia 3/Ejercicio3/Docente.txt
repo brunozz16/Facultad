@@ -1,0 +1,14 @@
+public class Docente implements Persona{
+	//ATRIBUTOS
+	private String nombre;
+	//CONSTRUCTOR
+	public Docente(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+	//METODOS DE LA INTERFACE
+	@Override
+	public void mostrar() {
+		System.out.println(this.nombre);
+	}
+}

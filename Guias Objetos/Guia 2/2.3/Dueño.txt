@@ -1,0 +1,10 @@
+public class Dueño {
+	private String telefono;
+	private Persona myPersona;
+	
+	public Dueño(String telefono, Persona myPersona) {
+		super();
+		this.telefono = telefono;
+		this.myPersona = myPersona;
+	}
+}

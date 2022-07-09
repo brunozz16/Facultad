@@ -1,0 +1,48 @@
+///////////CLASE MAIN////////////////
+package ejer1y2;
+
+import java.util.Calendar;
+
+public class Main {
+	public static void main(String[] args) {
+		Persona hombre= new Persona("Orlando",1999,Calendar.MARCH,23); //Paso nombre,año nacimiento,mes nacimiento,dia nacimiento.
+		hombre.verEstadisticas();	
+	}
+}
+
+////////////////////////////////////
+///////////CLASE PERSONA////////////
+package ejer1y2;
+
+import java.util.Calendar;
+
+public class Persona {
+	private String nombre;
+	private int edad;
+	private Calendar calendario;
+	
+	public Persona(String NAME,int aa,int mm,int dd){
+		nombre=NAME;
+		calendario=calendario.getInstance();
+		
+		if(calendario.get(Calendar.MONTH)>mm) {
+				edad=calendario.get(Calendar.YEAR)-aa-1;
+			}
+		if(calendario.get(Calendar.MONTH)<mm)	{
+			edad=calendario.get(Calendar.YEAR)-aa;
+		}
+		if(calendario.get(Calendar.MONTH)==mm)	{
+			if(calendario.get(Calendar.DAY_OF_MONTH)>dd)	{
+				edad=calendario.get(Calendar.YEAR)-aa-1;
+			}else {
+				edad=calendario.get(Calendar.YEAR)-aa;
+			}	
+		}
+		calendario.set(aa, mm,dd);
+	}
+	public void verEstadisticas() {
+		System.out.println("Usted "+ nombre +" tiene "+edad+" años de edad y cumple el dia "+
+		calendario.get(Calendar.DAY_OF_WEEK)+" de la semana");
+	}	
+}
+////////////////////////////////////

@@ -1,0 +1,44 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class Alumno extends Persona{
+	//ATRIBUTOS
+	private Calendar fecha_ingreso;
+	private Calendar fecha_egreso;
+	private Vector<Examen> myExamenes;
+	private Vector<Carrera> myCarreras;
+	//CONSTRUCTOR
+	public Alumno(String nombre, Calendar fecha_ingreso, Calendar fecha_egreso, Vector<Examen> myExamenes,Vector<Carrera> myCarrera) {
+		super(nombre);
+		this.fecha_ingreso = fecha_ingreso;
+		this.fecha_egreso = fecha_egreso;
+		this.myExamenes = myExamenes;
+		this.myCarreras=myCarrera;
+	}
+	//GETTERS AND SETTERS
+	public void setFecha_ingreso(Calendar fecha_ingreso) {
+		this.fecha_ingreso = fecha_ingreso;
+	}
+	public Calendar getFecha_egreso() {
+		return fecha_egreso;
+	}
+	public void setFecha_egreso(Calendar fecha_egreso) {
+		this.fecha_egreso = fecha_egreso;
+	}
+	public Vector<Examen> getMyExamenes() {
+		return myExamenes;
+	}
+	public void setMyExamenes(Vector<Examen> myExamenes) {
+		this.myExamenes = myExamenes;
+	}
+	public Vector<Carrera> getCarreras() {
+		return myCarreras;
+	}
+	public int verIngreso() {
+		int dia= fecha_ingreso.get(Calendar.DAY_OF_MONTH);
+		int mes= fecha_ingreso.get(Calendar.MONTH);
+		int año= fecha_ingreso.get(Calendar.YEAR);
+		return dia+mes+año;
+	}
+	
+}

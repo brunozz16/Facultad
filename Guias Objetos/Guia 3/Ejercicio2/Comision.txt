@@ -1,0 +1,31 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class Comision {
+	//ATRIBUTOS
+	private Calendar fecha_inicio_academico;
+	private char letra;
+	private Docente myDocente;
+	private Vector<Alumno> myAlumnos;
+	//CONSTRUCTOR
+	public Comision(Calendar fecha_inicio_academico, char letra, Docente myDocente, Vector<Alumno> myAlumnos) {
+		super();
+		this.fecha_inicio_academico = fecha_inicio_academico;
+		this.letra = letra;
+		this.myDocente = myDocente;
+		this.myAlumnos = myAlumnos;
+	}
+	//GETTERS AND SETTERS
+	public int getAñoAcademico() {
+		return fecha_inicio_academico.get(Calendar.YEAR);
+	}
+	//METHODS
+	public void verComision() {
+		System.out.println("Comision - "+letra);
+		System.out.println("Profesor: "+myDocente.getNombre());
+		System.out.println("Alumnos:");
+		for(Alumno oAlumno:myAlumnos) {
+			System.out.println(oAlumno.getNombre());
+		}
+	}	
+}

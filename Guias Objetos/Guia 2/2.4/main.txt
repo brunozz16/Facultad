@@ -1,0 +1,51 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class main {
+	
+	public static void main(String[] args) {
+		Calendar fecha=Calendar.getInstance();
+		Calendar fecha1=Calendar.getInstance();
+		Calendar fecha2=Calendar.getInstance();
+		Calendar fecha3=Calendar.getInstance();
+		llenarCalendar(fecha3,2001,01,02);
+		llenarCalendar(fecha2,2000,02,22);
+		llenarCalendar(fecha1,2007,07,11);
+		llenarCalendar(fecha,1999,06,10);
+		//Jefes
+		Trabajador jefe1=new Jefe("Rocky","Balboa","derqui 2874",42271774,10000f);
+		//Jornadas
+		Jornada dia1=new Jornada(20,fecha);
+		Jornada dia2=new Jornada(10,fecha2);
+		Jornada dia3=new Jornada(30,fecha3);
+		Vector<Jornada> jornadasdiafestivo = new Vector<Jornada>();
+		jornadasdiafestivo.add(dia1);
+		jornadasdiafestivo.add(dia2);
+		jornadasdiafestivo.add(dia3);
+		//Categorias
+		Categoria categoria1=new Categoria("CATEGORIA 5",20000f);
+		//Horas Jornales
+		HorasJornal horajornal1=new HorasJornal(250f,375f,fecha,fecha1);
+		Vector<HorasJornal> horasjornales = new Vector<HorasJornal>();
+		horasjornales.add(horajornal1);
+		//Jornalizados
+		Trabajador jornalizado1=new Jornalizado("Bruno","Carreon","1 de mayo 5579",42271774,
+				jornadasdiafestivo,horasjornales,(Jefe) jefe1);
+		//Mensualizado
+		Trabajador mensualizado1=new Mensualizado("Maximiliano","Fernandez","J.P Lopez 3345",27304220,(Jefe) jefe1,categoria1);
+		Vector<Trabajador> vectorTrabajadores=new Vector<Trabajador>();
+		vectorTrabajadores.add(jefe1);
+		vectorTrabajadores.add(jornalizado1);
+		vectorTrabajadores.add(mensualizado1);
+		Empresa empresa=new Empresa("Supermercado Alvear",vectorTrabajadores);
+		empresa.calcularSueldos(fecha2);
+		System.out.println("------------------");
+		empresa.listarEmpleados((Jefe)jefe1);
+		
+	}
+	public static void llenarCalendar(Calendar c,int aa,int mm,int dd) {
+		c.set(aa,mm,dd);
+	}
+
+}
+

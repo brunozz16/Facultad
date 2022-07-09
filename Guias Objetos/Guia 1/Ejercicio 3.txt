@@ -1,0 +1,146 @@
+////////////////CLASE MAIN////////////////////
+package ejer3;
+
+import java.util.Calendar;
+
+public class main {
+
+	public static void main(String[] args) {
+		//Crear carreras
+		Carrera ingirh=new Carrera("Ingenieria en recursos hidricos");
+		Carrera inginf= new Carrera("Ingenieria en informática");
+		//Crear personas- alumnos
+		Persona person=new Persona("Alumno1",42271774,10,Calendar.MARCH,1999);
+		Alumno alum= new Alumno(1,3,2020,person,inginf);
+		
+		Persona person2=new Persona("Alumno2",43379791,24,Calendar.DECEMBER,2000);
+		Alumno alum2=new Alumno(10,2,2021,person2,inginf);
+		//Crear facultad
+		Facultad facu= new Facultad("FICH");
+		//cargar alumnos en carreras
+		inginf.CargarAlumno(alum);
+		inginf.CargarAlumno(alum2);
+		//cargar carreras en facultad
+        facu.CargarCarrera(inginf);
+        facu.CargarCarrera(ingirh);
+		//mostrar alumnos y carreras
+        facu.mostrarCarrerasyAlumnos();	 
+	}
+}
+
+//////////////////////////////////////////////
+//////////////CLASE PERSONA///////////////////
+package ejer3;
+
+import java.util.Calendar;
+
+public class Persona {
+	Calendar m_fecha;
+	String m_nombre;
+	int m_doc;
+	
+	Persona(String nom,int doc,int dd,int mm,int aa){
+		m_nombre=nom;
+		m_doc = doc;
+		m_fecha=m_fecha.getInstance();
+		
+		m_fecha.set(aa, mm,dd);
+	}
+	public String toString() {
+		return this.m_nombre;
+	}
+}
+//////////////////////////////////////////////
+//////////////CLASE CARRERA///////////////////
+package ejer3;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class Carrera {
+	private String nombre;
+	private Collection<Alumno> alumnos;
+
+	public Carrera(String name) {
+		this.nombre=name;
+		alumnos=new ArrayList<Alumno>();
+	}
+	public String toString() {
+		return this.nombre;
+	}
+	public void CargarAlumno(Alumno alum) {
+		alumnos.add(alum);
+	}
+	public void mostrarAlumnos() {
+		for(Alumno obj:this.alumnos) {
+			System.out.println(obj.toString());
+		}
+	}
+	
+}
+//////////////////////////////////////////////
+//////////////CLASE ALUMNO////////////////////
+package ejer3;
+
+import java.util.Calendar;
+
+public class Alumno {
+	private Calendar fecha_inscripcion;
+	private Persona persona;
+	private Carrera carrera;
+	
+	public Alumno(Integer day,Integer month,Integer anno, Persona persona, Carrera carrera) {
+		super();
+		fecha_inscripcion=fecha_inscripcion.getInstance();
+		fecha_inscripcion.set(Calendar.YEAR, anno);
+		fecha_inscripcion.set(Calendar.MONTH,month);
+		fecha_inscripcion.set(Calendar.DAY_OF_MONTH,day);
+		this.fecha_inscripcion = fecha_inscripcion;
+		this.persona = persona;
+		this.carrera = carrera;
+	}
+	public String toString(){ 
+		return this.persona.toString()+" - "+
+			fecha_inscripcion.get(Calendar.DAY_OF_MONTH)+"/"+
+			fecha_inscripcion.get(Calendar.MONTH)+"/"+
+			fecha_inscripcion.get(Calendar.YEAR);
+	}
+}
+//////////////////////////////////////////////
+/////////////CLASE FACULTAD///////////////////
+package ejer3;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class Facultad {
+	private String nombre;
+	private  Collection<Carrera> carreras;
+	
+	public Facultad(String nombre) {
+		this.nombre = nombre;
+		carreras=new ArrayList<Carrera>();
+	}
+	
+	public String toString() {
+		return this.nombre;
+	}
+	
+	public void CargarCarrera(Carrera car) {
+		carreras.add(car);
+	}
+	
+	public void mostrarCarrerasyAlumnos() {
+	
+	System.out.print("Facultad ");
+	System.out.println(this.nombre);
+	
+	for(Carrera obj:this.carreras) {
+		System.out.print("Carrera: ");
+		System.out.println(obj.mostrarNombre());
+		System.out.println("Alumnos: ");
+		obj.mostrarAlumnos();	
+	}
+	}
+}
+//////////////////////////////////////////////

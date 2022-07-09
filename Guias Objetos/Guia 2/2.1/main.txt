@@ -1,0 +1,32 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class main {
+
+	public static void main(String[] args) {
+		Calendar m_1;
+		Calendar m_calendario=Calendar.getInstance();
+		
+		IVA m_iva=new IVA("Monotributo");
+		Cliente m_cliente1=new Cliente("Gilcomat SRL-R.I.","30-12345678-1",m_iva);
+		//Productos y detalles
+		Producto m_producto=new Producto(6f,"Porcelanato 45x45");
+		detalleFactura m_detallefactura=new detalleFactura(100,6f,m_producto);
+		
+		Producto m_producto1=new Producto(400f,"Grifería FV 6 piezas");
+		detalleFactura m_detallefactura1=new detalleFactura(1,400f,m_producto1);
+		//
+		Factura m_factura=new Factura("0001 0100",m_calendario,m_cliente1);
+		m_factura.cargarDetalle(m_detallefactura);
+		m_factura.cargarDetalle(m_detallefactura1);
+		
+		Empresa m_empresa=new Empresa("Mayorista S.A.",m_iva);   
+		m_empresa.cargarCliente(m_cliente1);
+		m_empresa.cargarFactura(m_factura);
+		m_empresa.cargarProducto(m_producto);
+		m_empresa.cargarProducto(m_producto1);
+		m_empresa.listarFacturas();
+	
+	}
+
+}

@@ -1,0 +1,15 @@
+public class tipoExamen {
+	//ATRIBUTOS
+	private String myTipo;
+	//CONSTRUCTOR
+	public tipoExamen(String myTipo) {
+		this.myTipo = myTipo;
+	}
+	//GETTERS AND SETTERS
+	public String getMyTipo() {
+		return myTipo;
+	}
+	public void setMyTipo(String myTipo) {
+		this.myTipo = myTipo;
+	}
+}

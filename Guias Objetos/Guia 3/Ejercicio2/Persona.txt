@@ -1,0 +1,15 @@
+public abstract class Persona {
+	//ATRIBUTOS
+	private String nombre;
+	//CONTRUCTOR
+	public Persona(String nombre) {
+		this.nombre = nombre;
+	}
+	//GETTERS AND SETTERS
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+}

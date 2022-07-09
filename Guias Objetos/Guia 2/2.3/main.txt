@@ -1,0 +1,38 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class main {
+
+	public static void main(String[] args) {
+		//Fechas
+		Calendar fecha1=Calendar.getInstance();
+		//Paises
+		Pais argentina=new Pais("Argentina");
+		Pais noruega=new Pais("Noruega");
+		//Personas
+		Persona persona1=new Persona("Bruno","Carreon");
+		Persona persona2=new Persona("Adrian","Herrera");
+		//Dueños
+		Dueño dueño1=new Dueño("3425027319",persona1);
+		//Compradores
+		Comprador comprador1=new Comprador("31507943",persona2);
+		//Detalles
+		Detalle detalle1=new Detalle(1500300f);
+		Detalle detalle2=new Detalle(5600000f);
+		//Autos
+		Vehiculo auto1=new Auto("Peugeot","206","ac163bi",1500000f,0f,detalle1,dueño1,null,argentina);
+		Vehiculo auto2=new Auto("Lamborguini","Murcielago","ad340jk",1500000f,0f,detalle2,null,null,noruega);
+		Vector<Vehiculo> vectorvehiculos=new Vector<Vehiculo>();
+		vectorvehiculos.add(auto1);
+		vectorvehiculos.add(auto2);
+		//ventas
+		Venta venta1=new Venta(vectorvehiculos,fecha1,comprador1);
+		Vector<Venta> vectorventas=new Vector<Venta>();
+		vectorventas.add(venta1);
+		//Concesionaria
+		Concesionaria m_concesionario=new Concesionaria("Magna",vectorvehiculos,vectorventas);
+		m_concesionario.registroVentas();
+		m_concesionario.registroVentasAutosNacionalesconDueño();
+	}
+
+}

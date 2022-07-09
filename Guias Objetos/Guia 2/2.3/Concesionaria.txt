@@ -1,0 +1,30 @@
+import java.util.Vector;
+
+public class Concesionaria {
+	private Vector<Vehiculo>  myVehiculo;
+	private Vector<Venta>  myVenta;
+	private String nombre;
+	
+	public Concesionaria(String nombre,Vector<Vehiculo> myVehiculo, Vector<Venta> myVenta) {
+		this.myVehiculo = myVehiculo;
+		this.myVenta = myVenta;
+		this.nombre = nombre;
+	}
+
+	public void registroVentas() {
+		System.out.println(this.nombre);
+		for(Venta oVenta:myVenta) {
+			System.out.println("Monto:$ "+oVenta.montoTotal());
+			System.out.println("Productos vendidos: ");
+			System.out.println(oVenta.verVehiculosVendidos());			
+			oVenta.verFecha();
+			System.out.println("Comprador: "+oVenta.verComprador());
+		}
+	}
+	public void registroVentasAutosNacionalesconDueño() {
+		System.out.println("Autos Nacionales con dueño");
+		for(Venta oVenta:myVenta) {
+			System.out.println(oVenta.verAutosNacionalesConDueño());
+		}
+	}
+}

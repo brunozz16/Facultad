@@ -1,0 +1,42 @@
+public abstract class Vehiculo {
+  private String marca;
+  private String modelo;
+  private String patente;
+  private float precio;
+  private float kilometraje;
+  private Detalle myDetalle;
+  private Dueño myDueño;
+  private Venta myVenta;
+
+  public Vehiculo(String marca, String modelo, String patente, float precio, float kilometraje,Detalle myDetalle,
+		Dueño myDueño, Venta myVenta) {
+	super();
+	this.marca = marca;
+	this.modelo = modelo;
+	this.patente = patente;
+	this.precio = precio;
+	this.kilometraje = kilometraje;
+	this.myDetalle = myDetalle;
+	this.myDueño = myDueño;
+	this.myVenta = myVenta;
+}
+
+  public abstract Boolean esAuto();
+
+  public abstract Boolean esAutoNacional();
+
+  public Boolean tieneDueño() {
+	  if(myDueño!=null) {
+		  return true;
+	  }else { return null; }  
+  }
+  public String verMarca() {
+	  return this.marca;
+  }
+  public String verModelo() {
+	  return this.modelo;
+  }
+  public float verPrecioVenta() {
+	  return myDetalle.verPrecio();
+  }
+}

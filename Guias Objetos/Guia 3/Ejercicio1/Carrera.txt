@@ -1,0 +1,23 @@
+import java.util.Iterator;
+import java.util.Vector;
+
+public class CarreraCorregido {
+
+	private Vector<Alumno> cAlumnos;
+
+	public Short listar_egresados() {
+		Short cant_egresados = 0;
+
+		Iterator<Alumno> iAlumnos = cAlumnos.iterator();
+		while(iAlumnos.hasNext()) {
+			Alumno oAlumno = iAlumnos.next();		
+
+			if (oAlumno.esEgresado())
+				cant_egresados++;
+
+			System.out.println( "Egresado " + oAlumno.getNombre() +
+					" - Promedio:" + oAlumno.getPromedio());
+		}
+		return cant_egresados;
+	}
+}

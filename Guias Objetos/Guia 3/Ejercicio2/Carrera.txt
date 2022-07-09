@@ -1,0 +1,34 @@
+import java.util.Vector;
+
+public class Carrera {
+	//ATRIBUTOS
+	private Facultad myFacultad;
+	private Vector<Alumno> myAlumnos;
+	private Vector<Catedra> myCatedras;
+	//CONSTRUCTOR
+	public Carrera(Facultad myFacultad, Vector<Alumno> myAlumnos,Vector<Catedra> myCatedras) {
+		this.myFacultad = myFacultad;
+		this.myAlumnos = myAlumnos;
+		this.myCatedras=myCatedras;
+	}
+	//GETTERS AND SETTERS
+	public Facultad getMyFacultad() {
+		return myFacultad;
+	}
+	public void setMyFacultad(Facultad myFacultad) {
+		this.myFacultad = myFacultad;
+	}
+	public Vector<Alumno> getMyAlumnos() {
+		return myAlumnos;
+	}
+	public void setMyAlumnos(Vector<Alumno> myAlumnos) {
+		this.myAlumnos = myAlumnos;
+	}
+	//METHODS
+	public void listarAlumnos(Catedra oCatedra) {
+		for(Catedra vCatedra:myCatedras ) {
+			if(vCatedra.equals(oCatedra))
+				vCatedra.verComisiones();
+		}
+	}
+}

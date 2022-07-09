@@ -1,0 +1,26 @@
+import java.util.Calendar;
+import java.util.Vector;
+
+public class Empresa {
+  private String nombre;
+  private Vector<Trabajador> myTrabajador;
+
+  public Empresa(String nombre, Vector<Trabajador> myTrabajador) {
+	this.nombre = nombre;
+	this.myTrabajador = myTrabajador;
+}
+
+public void calcularSueldos(Calendar periodo) {
+	System.out.println("--Sueldos de "+nombre+"--");
+	for(Trabajador oTrabajador:myTrabajador) {
+			System.out.print(oTrabajador.toString());
+			System.out.print(oTrabajador.calcularSueldo(periodo));
+			System.out.println("]");
+			
+		}
+  }
+public String verNombre() {
+	return this.nombre;
+}
+
+}

@@ -1,0 +1,31 @@
+import java.util.Vector;
+
+public class Universidad {
+	//ATRIBUTOS
+	private String nombre;
+	private Vector<Facultad>  myFacultad;
+	//CONSTRUCTOR
+	public Universidad(String nombre, Vector<Facultad> myFacultad) {
+		this.nombre = nombre;
+		this.myFacultad = myFacultad;
+	}
+	//GETTERS AND SETTERS
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public Vector<Facultad> getMyFacultad() {
+		return myFacultad;
+	}
+	public void setMyFacultad(Vector<Facultad> myFacultad) {
+		this.myFacultad = myFacultad;
+	}
+	//METHODS
+	public void listarAlumnos(Catedra oCatedra) {
+		for(Facultad oFacultad:myFacultad) {
+			oFacultad.listarAlumnos(oCatedra);
+		}
+	}
+}
