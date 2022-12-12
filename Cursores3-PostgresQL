@@ -1,0 +1,18 @@
+create function mFuncion4() returns void language plpgsql
+as
+$$
+declare autor record;
+begin
+	for autor in select au_id,au_lname,au_fname,city from authors loop
+	
+		if exists (select P.city from authors A
+		inner join TitleAuthor TA on A.au_id = TA.au_id
+		inner join Titles T on T.title_id = TA.title_id
+		inner join Publishers P on P.pub_id = T.pub_id
+		where A.city = P.city and autor.au_id = A.au_id)then
+			raise notice 'El autor: % reside en la misma ciudad que la editorial que lo edita',autor.au_lname;
+		end if;
+	end loop;
+	return;
+end; 
+$$
