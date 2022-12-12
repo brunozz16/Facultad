@@ -1,0 +1,17 @@
+create function mFuncion() returns void language plpgsql
+as
+$$
+declare fila record;
+begin
+	for fila in select title_id, price from titles where pub_id = '0736' loop
+
+		if fila.price < 10 then
+			update titles set price = fila.price * 1.25 where title_id = fila.title_id;
+		else
+			update titles set price = fila.price * 0.75 where title_id = fila.title_id;
+		end if;
+	end loop;
+	return;
+end 
+$$
+select mFuncion()
