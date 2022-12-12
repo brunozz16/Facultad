@@ -1,0 +1,94 @@
+create table empleado as (select * from employee)
+drop table empleado 
+select * from empleado
+CREATE TABLE Registro
+ (
+ fecha DATE NULL,
+ tabla varchar(100) NULL,
+ operacion varchar(30) NULL,
+ CantFilasAfectadas Integer NULL
+ )
+
+
+
+
+
+
+----------------------------------- dropping
+drop trigger tr_ejercicio7 on empleado
+
+
+
+ 
+--------------------------------- creacion del trigger
+create trigger tr_ejercicio7
+before
+delete on empleado
+execute procedure fu_ejercicio7()
+--------------------------------- creacion de la funcion (action)
+create or replace function fu_ejercicio7()
+returns trigger
+language plpgsql
+as
+$$
+declare row_count int;
+begin
+	row_count := (select count(*) from old);
+	if row_count > 1 then
+		insert into registro(fecha,tabla,operacion,cantfilasafectadas) 
+		values (current_timestamp,TG_TABLENAME,TG_OP,row_count);
+		raise notice 'agregados % datos!',row_count;
+	else 		
+		raise notice 'Cancelada % filas afectadas',row_count;
+		--rollback transaction;
+		return null;
+	end if;	
+return new;
+end;
+$$
+
+-- dropping
+drop function fu_ejercicio7()
+
+
+
+begin transaction
+--
+delete from empleado where job_id = 8
+--
+rollback transaction
+
+
+select * from empleado where job_id = 8
+select * from registro
+
+---las
+
+CREATE OR REPLACE FUNCTION eje7()
+RETURNS TRIGGER 
+LANGUAGE plpgsql
+AS
+$$
+DECLARE
+cantidadFila integer;
+BEGIN
+cantidadFila:=(SELECT COUNT(*) FROM empleado WHERE old.job_id=job_id);
+IF cantidadFila >=1 THEN
+INSERT INTO registro
+VALUES (CURRENT_TIMESTAMP,'EMPLOYEE', 'DELETE',cantidadFila);
+RETURN null;
+END IF;
+return null;
+END 
+$$;
+drop function eje7()
+CREATE TRIGGER tr_ejercicio77
+before DELETE
+ON empleado
+FOR EACH ROW
+EXECUTE PROCEDURE eje7();
+begin transaction
+commit transaction
+SELECT * FROM registro
+SELECT * FROM empleado WHERE job_id =8
+DELETE from empleado where job_id = 8
